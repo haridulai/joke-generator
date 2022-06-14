@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [joke, setJoke] = useState("");
   useEffect(() => {
     const fetchJoke = async () => {
       await fetch(
@@ -9,7 +10,7 @@ function App() {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          setJoke(data.value.joke);
         });
     };
     fetchJoke();
@@ -19,6 +20,7 @@ function App() {
     <div className="app">
       <center>
         <h1>The Joke Generator</h1>
+        <h2>{joke}</h2>
         <button>Generate Joke</button>
       </center>
     </div>
