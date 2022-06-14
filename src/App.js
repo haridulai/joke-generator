@@ -1,20 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import useRandomJoke from "./useRandomJoke";
 
 function App() {
-  const [joke, setJoke] = useState("");
-  useEffect(() => {
-    const fetchJoke = async () => {
-      await fetch(
-        `http://api.icndb.com/jokes/random?firstName=Sonny&lastName=Singh`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setJoke(data.value.joke);
-        });
-    };
-    fetchJoke();
-  }, []);
+  // Custom Hook
+  const joke = useRandomJoke();
 
   return (
     <div className="app">
