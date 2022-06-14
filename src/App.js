@@ -4,7 +4,7 @@ import useRandomJoke from "./useRandomJoke";
 
 function App() {
   // Custom Hook
-  const joke = useRandomJoke();
+  const joke = useRandomJoke("Jim", "Bob");
 
   return (
     <div className="app">
