@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import "./App.css";
 
 function App() {
+  useEffect(() => {
+    const fetchJoke = async () => {
+      await fetch(
+        `http://api.icndb.com/jokes/random?firstName=Sonny&lastName=Singh`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    };
+    fetchJoke();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <center>
+        <h1>The Joke Generator</h1>
+        <button>Generate Joke</button>
+      </center>
     </div>
   );
 }
